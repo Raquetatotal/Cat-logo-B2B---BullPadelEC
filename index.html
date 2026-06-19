@@ -7333,6 +7333,7 @@
 
     // ── ENVIAR PEDIDO A API ──────────────────────────────────────
     async function exportExcel() {
+      const cliente = currentUser ? currentUser.name : '';
       const ciudad = document.getElementById('f-ciudad').value.trim() || '';
       const fecha = document.getElementById('f-fecha').value || '';
       const notas = document.getElementById('f-notas').value.trim() || '';
