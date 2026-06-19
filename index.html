@@ -7095,6 +7095,25 @@
     // ── API CONFIG ───────────────────────────────────────────────
     const API_URL = 'https://api.bullpadelecuador.com';
 
+    // ── COMPATIBILIDAD: funciones stub para código que aún las llama ──
+    function loadProductAccess() {
+      return window._adminProductAccess || {};
+    }
+    function saveProductAccess(d) {
+      window._adminProductAccess = d;
+    }
+    function loadUsers() {
+      return window._cachedUsers || [];
+    }
+    function saveUsers(u) {
+      window._cachedUsers = u;
+    }
+    function loadUserPriceData() {
+      if (currentUser && window._userPricesFromAPI) return { [currentUser.email]: window._userPricesFromAPI };
+      return {};
+    }
+    function saveUserPriceData(d) { /* no-op */ }
+
     // ── STATE ────────────────────────────────────────────────────
     let currentUser = null;
     let b2bPct = 0;
