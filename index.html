@@ -7352,7 +7352,7 @@
         const p = PRODUCTS[+k]; const { qty, talla } = order[k];
         const pvp = p.precio_num || 0, b2b = pvp * (1 - b2bPct / 100), sub = b2b * qty;
         tQty += qty; tPVP += pvp * qty; tB2B += sub;
-        rows.push([i + 1, p.nombre, p.categoria, talla || '—', pvp || 'Ver web', pct > 0 ? pct + '%' : '0%', b2b > 0 ? b2b : 'Ver web', qty, sub > 0 ? sub : '—', p.url]);
+        rows.push([i + 1, p.nombre, p.categoria, talla || '—', pvp || 'Ver web', b2bPct > 0 ? b2bPct + '%' : '0%', b2b > 0 ? b2b : 'Ver web', qty, sub > 0 ? sub : '—', p.url]);
       });
       rows.push([], [' ', ' ', ' ', ' ', 'PVP Total', ' ', tPVP, ' ', ' ', ' '], [' ', ' ', ' ', ' ', 'B2B Total', ' ', ' ', tQty, tB2B, ' '], [' ', ' ', ' ', ' ', 'Ahorro', ' ', ' ', ' ', tPVP - tB2B, ' ']);
       const ws = XLSX.utils.aoa_to_sheet(rows);
